@@ -64,30 +64,45 @@
     <main>
         <!-- ===== HERO ===== -->
         <section class="hero" id="hero">
-            <div class="container hero__inner">
-                <p class="hero__eyebrow reveal">
-                    <span class="status-dot"></span> Open to Data Engineering roles
-                </p>
-                <h1 class="hero__title reveal">
-                    Hi, I'm Pugazenthi&nbsp;D —<br>
-                    I turn raw data into
-                    <span class="rotator" aria-live="polite">
-                        <span class="rotator__word">reliable pipelines</span>
-                    </span>
-                </h1>
-                <p class="hero__headline reveal">Data&nbsp;Engineer&nbsp;·&nbsp;SQL&nbsp;·&nbsp;Snowflake&nbsp;·&nbsp;dbt&nbsp;·&nbsp;Microsoft&nbsp;Fabric&nbsp;·&nbsp;Python&nbsp;·&nbsp;Power&nbsp;BI</p>
-                <p class="hero__sub reveal">I design dimensional models and ELT workflows that move data from raw source to trustworthy insight. Currently an Associate at Systech Solutions, Chennai.</p>
+            <div class="container hero__grid">
+                <div class="hero__copy">
+                    <p class="hero__eyebrow reveal">
+                        <span class="status-dot"></span> Open to Data Engineering roles
+                    </p>
+                    <h1 class="hero__title reveal">
+                        Hi, I'm Pugazenthi&nbsp;D —<br>
+                        I turn raw data into
+                        <span class="rotator" aria-live="polite">
+                            <span class="rotator__word">reliable pipelines</span>
+                        </span>
+                    </h1>
+                    <p class="hero__headline reveal">Data&nbsp;Engineer&nbsp;·&nbsp;SQL&nbsp;·&nbsp;Snowflake&nbsp;·&nbsp;dbt&nbsp;·&nbsp;Microsoft&nbsp;Fabric&nbsp;·&nbsp;Python&nbsp;·&nbsp;Power&nbsp;BI</p>
+                    <p class="hero__sub reveal">I design dimensional models and ELT workflows that move data from raw source to trustworthy insight. Currently an Associate at Systech Solutions, Chennai.</p>
 
-                <div class="hero__cta reveal">
-                    <a class="btn btn--primary magnetic" href="https://www.linkedin.com/in/pugazenthi/" target="_blank" rel="noopener">
-                        Connect on LinkedIn
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>
-                    </a>
-                    <a class="btn btn--ghost magnetic" href="mailto:pugazh308@gmail.com">Email me</a>
-                    <a class="btn btn--ghost magnetic" href="#projects">View work</a>
+                    <div class="hero__cta reveal">
+                        <a class="btn btn--primary magnetic" href="https://www.linkedin.com/in/pugazenthi/" target="_blank" rel="noopener">
+                            Connect on LinkedIn
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+                        </a>
+                        <a class="btn btn--ghost magnetic" href="mailto:pugazh308@gmail.com">Email me</a>
+                        <a class="btn btn--ghost magnetic" href="#projects">View work</a>
+                    </div>
                 </div>
 
-                <!-- stats -->
+                <div class="hero__visual reveal">
+                    <div class="scene" id="scene">
+                        <div class="scene__fallback" aria-hidden="true"></div>
+                        <canvas id="sceneCanvas" role="img" aria-label="Interactive 3D data network graph"></canvas>
+                        <span class="scene__hint" id="sceneHint">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path></svg>
+                            drag to explore
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- stats -->
+            <div class="container">
                 <div class="stats reveal">
                     <div class="stat glass spotlight">
                         <span class="stat__num" data-count="97" data-suffix="%">0</span>
@@ -327,6 +342,8 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="scene.js" defer></script>
     <script src="script.js"></script>
 </body>
 </html>
