@@ -67,7 +67,7 @@
             <div class="container hero__grid">
                 <div class="hero__copy">
                     <p class="hero__eyebrow reveal">
-                        <span class="status-dot"></span> Open to Data Engineering roles
+                        <span class="status-dot"></span> Open to Data Engineer &amp; Data Analyst roles
                     </p>
                     <h1 class="hero__title reveal">
                         Hi, I'm Pugazenthi&nbsp;D —<br>
@@ -84,12 +84,15 @@
                             Connect on LinkedIn
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>
                         </a>
+                        <a class="btn btn--ghost magnetic" href="https://github.com/pugazh308" target="_blank" rel="noopener">
+                            GitHub
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+                        </a>
                         <a class="btn btn--ghost magnetic" href="Pugazenthi_D_Resume.pdf" download>
                             Résumé
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
                         </a>
-                        <a class="btn btn--ghost magnetic" href="mailto:pugazh308@gmail.com">Email me</a>
-                        <a class="btn btn--ghost magnetic" href="#projects">View work</a>
+                        <a class="btn btn--ghost magnetic" href="mailto:pugazh308@gmail.com">Email</a>
                     </div>
                 </div>
 
@@ -152,6 +155,10 @@
                     <article class="skill-card glass spotlight reveal">
                         <h3>Programming</h3>
                         <ul class="tags"><li>Python</li><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>Seaborn</li><li>TensorFlow / Keras</li><li>NLTK</li></ul>
+                    </article>
+                    <article class="skill-card glass spotlight reveal">
+                        <h3>Web &amp; Backend</h3>
+                        <ul class="tags"><li>React 19</li><li>TypeScript</li><li>Node.js</li><li>Express</li><li>Django</li><li>PostgreSQL</li><li>Tailwind CSS</li></ul>
                     </article>
                     <article class="skill-card glass spotlight reveal">
                         <h3>BI &amp; Visualisation</h3>
@@ -224,12 +231,30 @@
                 <div class="projects">
                     <article class="project glass spotlight reveal">
                         <div class="project__top">
+                            <svg class="project__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"></path></svg>
+                            <span class="project__assoc">Systech Solutions</span>
+                        </div>
+                        <h3>Star Air — End-to-End Data Engineering</h3>
+                        <p>An end-to-end data warehouse for Star Air, an international airline. Ingested source data from SQL Server (OLTP) into Snowflake via ELT pipelines, designed and implemented a <strong>13-table galaxy-schema</strong> warehouse, and built <strong>13 dbt models</strong> across staging, intermediate and mart layers — with snapshots, data-quality validation and testing. Delivered a Power BI dashboard covering net revenue, top routes by revenue and top-performing agents.</p>
+                        <ul class="tags tags--mono"><li>SQL Server</li><li>Snowflake</li><li>dbt</li><li>Galaxy Schema</li><li>Power BI</li></ul>
+                    </article>
+                    <article class="project glass spotlight reveal">
+                        <div class="project__top">
+                            <svg class="project__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zM2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path></svg>
+                            <span class="project__assoc">Full-stack · AI</span>
+                        </div>
+                        <h3>DeutschMate AI — German Learning App</h3>
+                        <p>A full-stack AI web app for Goethe Institute German certification prep (A1–C2). Unlike static apps, lessons and practice questions are <strong>generated dynamically by AI</strong>, adapting to each learner's level and progress — with mock tests, flashcards, speaking practice and personalised learning paths. Node.js + Express with Prisma ORM over PostgreSQL (Neon) and JWT auth, powered by a unified AI service layer using Azure OpenAI with Google Gemini fallback.</p>
+                        <ul class="tags tags--mono"><li>React 19</li><li>TypeScript</li><li>Node.js</li><li>PostgreSQL</li><li>Azure OpenAI</li><li>Gemini</li></ul>
+                    </article>
+                    <article class="project glass spotlight reveal">
+                        <div class="project__top">
                             <svg class="project__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 5c-5 0-9 4.5-9 7s4 7 9 7 9-4.5 9-7-4-7-9-7z"></path></svg>
                             <span class="project__assoc">DG Vaishnav College</span>
                         </div>
                         <h3>Automated Macular Disease Prediction</h3>
-                        <p>A deep-learning system that classifies 7 macular diseases from OCT retinal scans with <strong>94–97% accuracy</strong> using a CNN (ResNet). Wrapped in a Django web app so providers and patients can upload scans and get instant AI-driven predictions, backed by TensorFlow/Keras and a SQL store.</p>
-                        <ul class="tags tags--mono"><li>Python</li><li>Deep Learning</li><li>ResNet / CNN</li><li>TensorFlow</li><li>Django</li><li>Medical Imaging</li></ul>
+                        <p>A final-year deep-learning system that classifies <strong>7 macular diseases</strong> from OCT retinal scans using a ResNet CNN. Wrapped in a Django web app so healthcare providers and patients can upload scans and receive real-time AI-driven predictions, with TensorFlow/Keras integrated over a SQL backend and an accessible interface designed for clinical use.</p>
+                        <ul class="tags tags--mono"><li>Python</li><li>TensorFlow / Keras</li><li>ResNet CNN</li><li>Django</li><li>Medical Imaging</li></ul>
                     </article>
                     <article class="project glass spotlight reveal">
                         <div class="project__top">
@@ -240,17 +265,8 @@
                         <p>A web platform that predicts the sentiment of text data. Users can analyse text directly on the site, and developers can integrate the same sentiment capability into their own products through an API service.</p>
                         <ul class="tags tags--mono"><li>Python</li><li>NLTK</li><li>NLP</li><li>REST API</li></ul>
                     </article>
-                    <article class="project glass spotlight reveal">
-                        <div class="project__top">
-                            <svg class="project__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"></path></svg>
-                            <span class="project__assoc">Systech Solutions</span>
-                        </div>
-                        <h3>Star Air — End-to-End Data Engineering</h3>
-                        <p>An end-to-end data warehouse for Star Air, an airline operating across India, the Middle East, Asia and Europe. Profiled the source systems (SSA &amp; BUD), designed conceptual, logical and physical models plus a scalable <strong>Galaxy Schema</strong> with full source-to-target mapping, then built the dbt + Snowflake ELT and Power BI dashboards — modelling airline revenue from ticket booking through flight operations and multi-currency payments to interline settlements, with QA on row counts, nulls, duplicates, referential integrity and business logic.</p>
-                        <ul class="tags tags--mono"><li>Snowflake</li><li>dbt</li><li>Galaxy Schema</li><li>STTM</li><li>Data Quality</li><li>Power BI</li></ul>
-                    </article>
                 </div>
-                <p class="projects__note reveal">More projects and source links coming soon — find the latest on <a href="https://www.linkedin.com/in/pugazenthi/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+                <p class="projects__note reveal">Code and more on <a href="https://github.com/pugazh308" target="_blank" rel="noopener">GitHub</a> and <a href="https://www.linkedin.com/in/pugazenthi/" target="_blank" rel="noopener">LinkedIn</a>.</p>
             </div>
         </section>
 
@@ -329,6 +345,10 @@
                         <a class="contact__card" href="https://www.linkedin.com/in/pugazenthi/" target="_blank" rel="noopener">
                             <span class="contact__label">LinkedIn</span>
                             <span class="contact__value">in/pugazenthi</span>
+                        </a>
+                        <a class="contact__card" href="https://github.com/pugazh308" target="_blank" rel="noopener">
+                            <span class="contact__label">GitHub</span>
+                            <span class="contact__value">pugazh308</span>
                         </a>
                     </div>
                 </div>
