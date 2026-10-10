@@ -417,3 +417,370 @@ Dependencies: tokens → components → sections → motion → validation. Imag
 - [x] Explicit unresolved decisions (§12).
 
 **Phase 1 is a specification only. No website files were modified. Awaiting approval before Phase 2 (homepage visual design + implementation planning).**
+
+
+---
+
+# Phase 1 Decision Resolution + Phase 2 Homepage Design and Implementation Plan
+
+**Status:** Design decisions finalized; Phase 2 planning only.
+**Implementation status:** NOT APPROVED. No website code or existing website files may be changed until the owner explicitly approves implementation.
+
+## 14. Resolved Design Decisions
+
+The following decisions supersede the corresponding open items in §12.
+
+### 14.1 Hero signature: lightweight animated SVG pipeline
+
+**Decision: Replace Three.js.**
+
+Use a bespoke, lightweight SVG data-pipeline illustration rather than a WebGL/Three.js scene.
+
+Design intent:
+- Show a clear flow from source data through staging and transformation to warehouse/marts and analytics.
+- Use the existing design tokens: text, secondary text, lime accent, and border on the dark background.
+- Make the diagram feel alive with restrained SVG/CSS animation: subtle path-drawing on entry and occasional low-amplitude data pulses.
+- Avoid particle clouds, simulated dashboards, excessive node movement, and visual effects that compete with the headline.
+- Preserve a static, meaningful SVG state if animation is disabled, JavaScript fails, or reduced motion is requested.
+- Provide an accessible text alternative. The graphic must not carry essential information that is unavailable elsewhere in text.
+- Prefer CSS/SVG animation over adding an animation library.
+
+Planning note: SVG is the selected design direction. Actual bundle size, loading behaviour, and browser performance must be validated during implementation and testing; do not claim measured performance gains before measuring them.
+
+### 14.2 Theme: dark-only
+
+**Decision: Remove the light/dark theme toggle.**
+
+- The design system has one intended appearance: charcoal, warm white, muted grey, and lime.
+- Remove theme-switching from the future design plan and QA matrix.
+- Retain system-level accessibility features such as reduced motion; dark-only does not mean ignoring user preferences.
+- Verify text and interface contrast against the final rendered components.
+
+### 14.3 Project media: real screenshots are available
+
+**Decision: Plan around genuine project screenshots.**
+
+- Use real screenshots supplied by the owner for the applicable dashboard and application projects.
+- Star Air should receive the primary media slot in the featured-project panel.
+- Use actual project visuals rather than stock images, invented dashboards, or fabricated results.
+- Confirm that screenshots contain no credentials, personal data, confidential business information, or proprietary information that should not be public.
+- If an image cannot be shared safely, use a sanitized architecture diagram based on the real project rather than presenting a mockup as a real application.
+- Do not crop out context in a way that misrepresents the work.
+- During implementation, use responsive image sizes, explicit dimensions/aspect ratios, descriptive alt text, and lazy loading for below-the-fold media.
+
+Asset inventory is still required in Phase 2 planning: list the actual available files, which project each belongs to, image dimensions, confidentiality status, and any gaps. The statement that real screenshots are available does not establish which exact files or projects they cover.
+
+### 14.4 Fonts: self-host WOFF2
+
+**Decision: Self-host font files.**
+
+- Use Space Grotesk for display typography, Inter for body/UI text, and JetBrains Mono for technical metadata.
+- Self-host optimized WOFF2 subsets for the required character set and weights.
+- Use `font-display: swap` and preload only the minimum above-the-fold fonts justified by testing.
+- Keep robust system-font fallbacks.
+- Do not fetch fonts from Google Fonts at runtime once self-hosting is implemented.
+- Confirm font licenses and retain required license notices in the repository.
+- Do not add unused weights or duplicate font files.
+
+### 14.5 Cursor spotlight and magnetic buttons
+
+**Decision: Remove both effects.**
+
+- Remove cursor spotlight effects.
+- Remove magnetic pointer-following button movement.
+- Keep purposeful micro-interactions: clear hover/focus states, subtle card elevation, button press feedback, navigation transitions, and restrained section reveals.
+- Do not make important actions depend on hover.
+- On coarse pointers and touch devices, preserve equivalent visible affordances without pointer-specific effects.
+
+### 14.6 Certification presentation
+
+**Decision: Separate the presentation of Certifications from Badges & Courses; do not alter content in this phase.**
+
+- Define two distinct visual groups in the design specification.
+- Preserve existing item names, issuers, links, and descriptions for now.
+- Do not silently reclassify an item or rewrite its label during Phase 2 planning.
+- During a later content-review phase, the owner can approve any reclassification or wording changes based on the actual credentials.
+
+## 15. Phase 2 Objective and Boundaries
+
+Phase 2 is the **homepage visual design and implementation plan**, not implementation.
+
+Its objective is to turn the approved design system into a concrete, section-by-section homepage blueprint grounded in the existing website and available real project assets.
+
+### In scope
+- Define the homepage composition and visual hierarchy.
+- Specify section proportions, alignment, spacing, image slots, and responsive changes.
+- Detail the hero SVG pipeline composition and its static/reduced-motion states.
+- Map real project screenshots to their intended slots, once the files are inventoried.
+- Define the interaction sequence and motion behaviour.
+- Create a component-by-component implementation plan and dependencies.
+- Define validation and acceptance tests.
+
+### Out of scope
+- Editing `index.html`, `styles.css`, `script.js`, `scene.js`, or any other website source.
+- Writing or applying implementation code.
+- Deploying to GitHub Pages or changing repository configuration.
+- Rewriting project descriptions, experience, achievements, credentials, or other existing content.
+- Inventing performance metrics, business outcomes, or project evidence.
+- Removing existing files or dependencies before implementation is explicitly approved.
+
+**Stop condition:** deliver the plan and wait for explicit owner approval. Do not interpret the request to plan Phase 2 as permission to implement it.
+
+## 16. Phase 2 Homepage Visual Blueprint
+
+The current section order from the repository audit remains the baseline. This is a visual and presentation plan, not a content rewrite.
+
+### 16.1 Global page frame
+
+- Dark-only editorial system using the approved design tokens in §3.
+- Centered content container with a maximum width of approximately 1,200px.
+- Consistent responsive gutters and section spacing from §5.
+- Hairline separators used to establish rhythm, not to box every element.
+- One dominant lime action per viewport where practical.
+- Solid card surfaces as the default; reserve translucent blur for the scrolled navigation only.
+- No cursor spotlight, magnetic movement, or decorative multicolour gradients.
+- Keep semantic structure and all existing content intact during design planning.
+
+### 16.2 Navigation
+
+Composition:
+- Monogram/brand at the left.
+- Existing section links in a clear horizontal sequence on desktop.
+- Résumé as a secondary/outline action.
+- Transparent over the top of the hero; transitions to the sanctioned dark translucent surface and border after scrolling.
+- One consistent breakpoint for collapsing the navigation; target approximately 900px, subject to actual content testing.
+- Mobile menu must be keyboard operable, announce its expanded state, close with Escape, restore focus to the trigger, and prevent background scrolling while open.
+
+Visual rules:
+- Compact 64px target height.
+- Clear text hierarchy and generous enough link spacing.
+- Active section state uses lime text and a subtle lime-tinted background.
+- Visible focus ring on every interactive item.
+- No theme toggle.
+
+### 16.3 Hero
+
+Desktop composition:
+- Two-column layout at sufficiently wide viewports: approximately 1.1fr copy to 0.9fr visual.
+- Left: retain the existing eyebrow, headline, intro, and calls to action without rewriting their wording.
+- Right: SVG pipeline illustration.
+- Maintain a clear gap between text and visual; avoid compressing the headline to make room for the illustration.
+- Background grid may be used at very low contrast, masked so it does not interfere with reading.
+- Only one primary lime CTA; other actions remain secondary or text links.
+
+SVG visual sequence:
+1. Source node.
+2. Ingestion/staging node.
+3. Transformation/dbt node.
+4. Warehouse/mart node.
+5. Analytics/output node.
+
+The exact node labels must reflect the existing project/portfolio content and must not imply tools or systems the owner has not used. The motif is a professional signature, not a claim that the user's personal workflow always follows one specific architecture.
+
+Motion:
+- On entry, reveal connection paths and nodes in a short, non-blocking sequence.
+- Use occasional low-frequency data pulses only if they remain subtle.
+- Avoid continuous high-frequency movement.
+- Pause when off-screen where scripting is used.
+- Reduced-motion and no-JavaScript states display the complete static pipeline.
+
+Mobile composition:
+- Text, name, role, and calls to action appear first.
+- Pipeline appears below the copy in a compact, readable form.
+- Stats remain below the core introduction, using the existing content.
+- No visual canvas or decorative graphic may appear above the professional identity on mobile.
+
+### 16.4 About
+
+- Keep the existing content unchanged.
+- Use a restrained editorial text block with a comfortable measure of approximately 60–70 characters per line.
+- Use a clear section heading, optional decorative index that is hidden from assistive technology, and consistent vertical spacing.
+- Avoid a large glass panel around ordinary text.
+- On desktop, the text may align with a narrow secondary column or small metadata area only if this does not make the section feel sparse or fragment the reading flow.
+- On mobile, present a straightforward single-column reading experience.
+
+### 16.5 Skills
+
+- Keep existing skill names and categories unchanged in this phase.
+- Present skills as grouped solid-surface cards or compact editorial groups, using the existing category structure where possible.
+- Prioritize the data-engineering groups visually without deleting or hiding other skills.
+- Use small technical chips with consistent spacing and restrained borders.
+- Do not use proficiency percentages or decorative progress bars.
+- Desktop: multiple columns based on available width; tablet: two columns where readable; mobile: one column or compact grouped flow.
+- Ensure chips wrap naturally and do not cause horizontal overflow.
+
+### 16.6 Experience
+
+- Use a vertical timeline with a thin neutral rail and lime nodes.
+- Make role/company the strongest metadata; dates and employment type are secondary.
+- Keep all existing role descriptions and dates unchanged.
+- Clearly preserve the distinction already present in the content between training, internships, and professional employment; do not invent or change labels in this phase.
+- Use simple text hierarchy rather than enclosing every entry in a heavy card.
+- Mobile timeline spacing must allow the date and role to wrap without collision.
+
+### 16.7 Projects
+
+Featured Star Air panel:
+- Full-width featured section with a two-column desktop layout.
+- Left: real dashboard screenshot or a genuine, sanitized architecture diagram.
+- Right: existing title, summary, technology metadata, and existing actions.
+- Media target aspect ratio: approximately 16:10.
+- Use one restrained lime accent to distinguish the featured project.
+- Preserve existing wording and claims. Do not add numerical outcomes or production claims.
+
+Supporting projects:
+- Use a consistent card family with flexible content for application, AI, and machine-learning projects.
+- Use genuine project screenshots when available.
+- Preserve a consistent 16:10 media area to create a coherent grid.
+- Keep title, existing summary, technical metadata, and actions in a predictable order.
+- Keep multiple actions as separate links; do not nest interactive elements.
+- Desktop: featured panel followed by a balanced supporting grid.
+- Tablet: two columns if cards remain readable.
+- Mobile: single-column cards, media above text.
+
+Media handling plan:
+- Create an asset inventory before implementation.
+- Confirm each image's project, authenticity, permitted public use, and best crop.
+- Use descriptive alt text based on the actual image.
+- Provide explicit dimensions or aspect-ratio reservations to avoid layout shifts.
+- Use responsive image variants and lazy-load below-the-fold images.
+- Do not use stock imagery to imply it is a screenshot of the owner's project.
+
+### 16.8 Certifications and Badges & Courses
+
+- Use two separate visual groups with clear subheadings.
+- Keep the same card family, but make issuer and credential metadata easy to scan.
+- Preserve every current item and its current text during this phase.
+- Make external-link affordances visible on hover and keyboard focus, not hover alone.
+- Ensure the visual split does not imply an unapproved change to the status of an individual item.
+- Any content reclassification requires separate owner approval later.
+
+### 16.9 Education
+
+- Keep existing entries and wording.
+- Use a compact, clean layout with institution, qualification, and dates in a predictable hierarchy.
+- Avoid giving this section the same visual weight as the flagship project.
+- Use a simple two-column layout on desktop only if the existing content benefits from it; stack on mobile.
+
+### 16.10 Contact and footer
+
+- Use a strong but concise contact-section composition.
+- Present existing email, LinkedIn, GitHub, résumé, and other contact actions without changing destinations.
+- Make tap targets at least 44px where practical.
+- Keep the footer compact: monogram, relevant links, copyright line, and back-to-top affordance if retained.
+- Use a hairline top border and muted metadata.
+- Ensure links remain understandable without colour alone.
+
+## 17. Asset Inventory and Homepage Mockup Inputs
+
+Before implementation approval, produce an inventory of the real screenshot assets available to the project.
+
+For each asset, record:
+- Filename/path.
+- Project it belongs to.
+- What the screenshot actually depicts.
+- Original pixel dimensions and aspect ratio.
+- Whether it contains confidential, personal, or sensitive information.
+- Proposed display slot and crop.
+- Whether a sanitized version is needed.
+- Whether alt text can be drafted from the actual image.
+
+Do not assume the assets are already in the repository just because the owner says real screenshots are available. If files are not accessible, request them or mark the media slot as pending.
+
+The Phase 2 visual blueprint should include a written wireframe for:
+- Desktop hero and navigation.
+- Mobile hero and navigation.
+- Featured Star Air project.
+- Supporting project grid.
+- Experience and skills sections.
+- Certification/badge grouping.
+- Contact and footer.
+
+If image or browser-preview tooling is available, a static visual mockup may be proposed as a review artifact. It must not be mistaken for an implemented or deployed website.
+
+## 18. Phase 2 Implementation Plan (Planning Only)
+
+Implementation should be organized into reviewable stages after explicit approval.
+
+### Stage 0 — Asset and baseline verification
+- Inventory repository files and available real screenshots.
+- Record the current site structure and relevant dependencies.
+- Capture baseline screenshots and run a baseline accessibility/performance audit if browser tooling is available.
+- Record current behaviour before removing Three.js, theme switching, spotlight, or magnetic interactions.
+- No source changes before approval.
+
+### Stage 1 — Foundation
+- Introduce approved design tokens and typography.
+- Plan the self-hosted WOFF2 assets and licensing.
+- Define global resets, containers, spacing, focus states, and link styles.
+- Add safe no-JavaScript behaviour so essential content is never hidden.
+- Resolve navigation breakpoints and sticky-header layout without negative-margin coupling.
+
+### Stage 2 — Shared components
+- Navigation and mobile menu.
+- Buttons, links, chips, cards, focus states.
+- Section heading pattern and timeline components.
+- Image/media container behaviour.
+
+### Stage 3 — Hero
+- Replace Three.js with the SVG pipeline motif.
+- Preserve static fallback and accessible text alternative.
+- Implement copy-first mobile hierarchy.
+- Add restrained entrance animation and reduced-motion behaviour.
+
+### Stage 4 — Project media and cards
+- Integrate owner-supplied genuine screenshots.
+- Build the featured Star Air panel and supporting project grid.
+- Verify responsive crops, image dimensions, and action links.
+- Do not alter project content or add unsupported claims.
+
+### Stage 5 — Remaining sections
+- Apply the visual system to About, Skills, Experience, Certifications/Badges & Courses, Education, Contact, and Footer.
+- Preserve existing content.
+- Remove the theme toggle, spotlight, and magnetic movement only as part of the approved implementation.
+
+### Stage 6 — Motion and responsive refinement
+- Add purposeful micro-interactions and section reveals.
+- Verify touch behaviour and reduced-motion states.
+- Test navigation and layout at mobile, tablet, and desktop widths.
+
+### Stage 7 — Validation and deployment readiness
+- Keyboard-only walkthrough.
+- Screen-reader/semantic review where tooling is available.
+- WCAG contrast check using an actual analyzer.
+- Test at 320px width and 200% zoom.
+- Verify no-JavaScript fallback and failed-font behaviour.
+- Run Lighthouse and/or equivalent checks where available.
+- Check console errors, broken links, missing images, layout shifts, and navigation states.
+- Compare before/after screenshots at matching viewport sizes.
+- Confirm that no project content or professional claims changed unexpectedly.
+- Deployment remains a separate, explicitly approved action.
+
+## 19. Acceptance Criteria for the Future Implementation
+
+The redesign can be considered ready for release only when all applicable checks pass:
+
+- [ ] Dark editorial palette is consistent across the page.
+- [ ] Typography, spacing, surfaces, borders, and controls follow the design tokens.
+- [ ] The SVG pipeline is readable, lightweight by design, accessible, and has a static reduced-motion/no-JS state.
+- [ ] No Three.js hero remains in the approved final implementation.
+- [ ] No light-theme toggle remains.
+- [ ] Fonts are self-hosted WOFF2 with appropriate fallbacks and license notices.
+- [ ] Spotlight and magnetic button effects are removed.
+- [ ] Hover, focus, pressed, and mobile interaction states remain clear.
+- [ ] The mobile hero places text before the pipeline graphic.
+- [ ] Genuine project screenshots are used only where available and safe to publish.
+- [ ] Certifications and Badges & Courses are visually separated without unapproved content changes.
+- [ ] No content is hidden if JavaScript fails.
+- [ ] Navigation does not wrap awkwardly at intermediate widths.
+- [ ] Keyboard navigation, visible focus, reduced motion, and semantic labels work.
+- [ ] No horizontal overflow at 320px width; layout remains usable at 200% zoom.
+- [ ] Contrast and performance are tested rather than merely assumed.
+- [ ] No fabricated results, screenshots, or claims are introduced.
+- [ ] Owner has reviewed the result before deployment.
+
+## 20. Approval Gate
+
+**Phase 2 planning is complete only when the owner has reviewed the homepage visual blueprint, asset mapping, and staged implementation plan.**
+
+This document does not authorize implementation. Do not edit website source files, modify the repository, or deploy changes until the owner explicitly approves implementation.
