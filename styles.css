@@ -34,7 +34,7 @@
   --elevated:       #171B18;
   --text:           #F2F4EF;
   --text-secondary: #A2AAA2;
-  --text-faint:     #747D75;
+  --text-faint:     #868D85;
   --accent:         #C6F36B;
   --accent-ink:     #0B0D0C;
   --accent-dim:     #A6DB4C;
@@ -418,7 +418,7 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 .featured__body .chips { margin-bottom: 20px; }
 .proj__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
 
-.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .project {
   display: flex; flex-direction: column;
   background: var(--surface); border: 1px solid var(--border);
