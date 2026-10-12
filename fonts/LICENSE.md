@@ -6,6 +6,7 @@ in accordance with that license.
 
 | Font | Family | Source | Copyright |
 |------|--------|--------|-----------|
+| `fraunces-latin.woff2` | Fraunces | https://fonts.google.com/specimen/Fraunces | © The Fraunces Project Authors (https://github.com/undercasetype/Fraunces) |
 | `space-grotesk-latin.woff2` | Space Grotesk | https://fonts.google.com/specimen/Space+Grotesk | © Florian Karsten |
 | `inter-latin.woff2` | Inter | https://fonts.google.com/specimen/Inter | © The Inter Project Authors (https://github.com/rsms/inter) |
 | `jetbrains-mono-latin.woff2` | JetBrains Mono | https://fonts.google.com/specimen/JetBrains+Mono | © 2020 The JetBrains Mono Project Authors |

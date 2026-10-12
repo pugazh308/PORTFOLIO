@@ -148,16 +148,16 @@
     }
   } catch (e) {}
 
-  /* ---------- Pipeline animation (only in view, motion allowed) ---------- */
+  /* ---------- Diagram animations (pipeline + architecture) ---------- */
   try {
-    var pipeline = document.getElementById("pipeline");
-    if (pipeline && !reduce && "IntersectionObserver" in window) {
+    var diagrams = document.querySelectorAll("#pipeline, .arch");
+    if (diagrams.length && !reduce && "IntersectionObserver" in window) {
       var pObs = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) { pipeline.classList.add("is-animating"); pObs.unobserve(pipeline); }
+          if (entry.isIntersecting) { entry.target.classList.add("is-animating"); pObs.unobserve(entry.target); }
         });
       }, { threshold: 0.3 });
-      pObs.observe(pipeline);
+      diagrams.forEach(function (el) { pObs.observe(el); });
     }
   } catch (e) {}
 

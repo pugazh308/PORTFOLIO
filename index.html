@@ -8,11 +8,20 @@
     <meta name="author" content="Pugazenthi D">
     <meta name="theme-color" content="#111310">
 
+    <link rel="canonical" href="https://pugazh308.github.io/PORTFOLIO/">
     <meta property="og:title" content="Pugazenthi D — Data Engineer">
     <meta property="og:description" content="Data Engineer: SQL · Snowflake · dbt · Microsoft Fabric · Python · Power BI · Data Warehousing.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pugazh308.github.io/PORTFOLIO/">
+    <meta property="og:image" content="https://pugazh308.github.io/PORTFOLIO/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pugazenthi D — Data Engineer">
+    <meta name="twitter:description" content="Data Engineer: SQL · Snowflake · dbt · Microsoft Fabric · Python · Power BI.">
+    <meta name="twitter:image" content="https://pugazh308.github.io/PORTFOLIO/assets/og-image.png">
 
-    <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23C4F56A'/><text x='50' y='72' font-size='60' font-family='monospace' font-weight='700' text-anchor='middle' fill='%23141611'>PD</text></svg>">
     <link rel="stylesheet" href="styles.css">
@@ -67,7 +76,7 @@
                     <h1 class="hero__title reveal">
                         Hi, I'm Pugazenthi&nbsp;D —<br>
                         I turn raw data into
-                        <span class="rotator" aria-live="polite"><span class="rotator__word">reliable pipelines</span></span>
+                        <span class="rotator"><span class="rotator__word">reliable pipelines</span></span>
                     </h1>
                     <p class="hero__headline reveal">Data&nbsp;Engineer · SQL · Snowflake · dbt · Microsoft&nbsp;Fabric · Python · Power&nbsp;BI</p>
                     <p class="hero__sub reveal">I design dimensional models and ELT workflows that move data from raw source to trustworthy insight. Currently an Associate at Systech Solutions, Chennai.</p>
@@ -150,6 +159,17 @@
                         <figcaption class="visually-hidden">Data flows from SQL Server source, through ELT ingestion and dbt transformation, into a Snowflake galaxy-schema warehouse, and out to Power BI analytics.</figcaption>
                     </figure>
                 </div>
+            </div>
+        </section>
+
+        <!-- ===== TECHNICAL PROOF STRIP ===== -->
+        <section class="proof" aria-label="Technical focus">
+            <div class="proof__inner">
+                <div class="proof__item"><p class="proof__k">Data Platforms</p><p class="proof__v">Snowflake <span>·</span> Microsoft Fabric</p></div>
+                <div class="proof__item"><p class="proof__k">Transformation</p><p class="proof__v">dbt <span>·</span> ELT <span>·</span> SQL</p></div>
+                <div class="proof__item"><p class="proof__k">Programming</p><p class="proof__v">Python <span>·</span> SQL Server</p></div>
+                <div class="proof__item"><p class="proof__k">Analytics</p><p class="proof__v">Power BI <span>·</span> Tableau</p></div>
+                <div class="proof__item"><p class="proof__k">Certification</p><p class="proof__v">Microsoft DP-700</p></div>
             </div>
         </section>
 
@@ -250,27 +270,60 @@
             <div class="container">
                 <h2 class="section__title reveal" id="proj-title" data-index="04">Projects</h2>
 
-                <!-- Featured: Star Air -->
-                <article class="featured reveal">
-                    <div class="media">
-                        <!-- Replace this placeholder with: <img src="assets/star-air-dashboard.png" alt="Star Air Power BI dashboard showing net revenue, top routes and top agents" width="1280" height="800"> -->
+                <!-- Featured case study: Star Air -->
+                <article class="case reveal" aria-labelledby="case-title">
+                    <div class="case__head">
+                        <span class="case__badge">Featured case study</span>
+                        <span class="case__status">Practice · Training project</span>
+                    </div>
+                    <h3 class="case__title" id="case-title">Star Air — End-to-End Data Engineering</h3>
+                    <p class="case__lead">A full source-to-insight data warehouse for Star Air, an international airline operating across India, the Middle East, Asia and Europe. Built during data engineering training at Systech Solutions: from source analysis and dimensional modelling through dbt transformation on Snowflake to Power BI reporting.</p>
+
+                    <div class="case__media media">
+                        <!-- Replace with: <img src="assets/star-air-dashboard.png" alt="Star Air Power BI dashboard: net revenue, top routes by revenue, top-performing agents" width="1280" height="800"> -->
                         <div class="media__placeholder">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
-                            <span>Star Air dashboard — screenshot slot (16:10)</span>
+                            <span>Star Air Power BI dashboard — screenshot slot (16:10)</span>
                         </div>
                     </div>
-                    <div class="featured__body">
-                        <p class="featured__eyebrow">Featured · Systech Solutions</p>
-                        <h3>Star Air — End-to-End Data Engineering</h3>
-                        <p>An end-to-end data warehouse for Star Air, an international airline. Ingested source data from SQL Server (OLTP) into Snowflake via ELT pipelines, designed and implemented a <strong>13-table galaxy-schema</strong> warehouse, and built <strong>13 dbt models</strong> across staging, intermediate and mart layers — with snapshots, data-quality validation and testing. Delivered a Power BI dashboard covering net revenue, top routes by revenue and top-performing agents.</p>
-                        <ul class="chips"><li class="chip">SQL Server</li><li class="chip">Snowflake</li><li class="chip">dbt</li><li class="chip">Galaxy Schema</li><li class="chip">Power BI</li></ul>
-                        <div class="proj__actions">
-                            <a class="btn btn--secondary" href="https://github.com/pugazh308" target="_blank" rel="noopener">View on GitHub</a>
-                        </div>
+
+                    <figure class="arch" id="arch">
+                        <svg viewBox="0 0 920 150" role="img" aria-labelledby="archT archD" xmlns="http://www.w3.org/2000/svg">
+                            <title id="archT">Star Air data architecture</title>
+                            <desc id="archD">SQL Server source, loaded via ELT into Snowflake, transformed with dbt into a galaxy-schema warehouse, and reported in Power BI.</desc>
+                            <line class="arch-line" x1="155" y1="75" x2="195" y2="75"></line>
+                            <line class="arch-line" x1="345" y1="75" x2="385" y2="75"></line>
+                            <line class="arch-line" x1="535" y1="75" x2="575" y2="75"></line>
+                            <line class="arch-line" x1="725" y1="75" x2="765" y2="75"></line>
+                            <circle class="arch-dot d1" cx="155" cy="75" r="4"></circle>
+                            <circle class="arch-dot d2" cx="345" cy="75" r="4"></circle>
+                            <circle class="arch-dot d3" cx="535" cy="75" r="4"></circle>
+                            <circle class="arch-dot d4" cx="725" cy="75" r="4"></circle>
+                            <g><rect class="arch-box" x="5" y="40" width="150" height="70" rx="10"></rect><text class="arch-label" x="21" y="72">Source</text><text class="arch-sub" x="21" y="90">SQL&nbsp;SERVER · OLTP</text></g>
+                            <g><rect class="arch-box" x="195" y="40" width="150" height="70" rx="10"></rect><text class="arch-label" x="211" y="72">Ingest</text><text class="arch-sub" x="211" y="90">ELT</text></g>
+                            <g><rect class="arch-box" x="385" y="40" width="150" height="70" rx="10"></rect><text class="arch-label" x="401" y="72">Transform</text><text class="arch-sub" x="401" y="90">DBT · STAGING→MART</text></g>
+                            <g><rect class="arch-box" x="575" y="40" width="150" height="70" rx="10"></rect><text class="arch-label" x="591" y="72">Warehouse</text><text class="arch-sub" x="591" y="90">SNOWFLAKE · GALAXY</text></g>
+                            <g><rect class="arch-box" x="765" y="40" width="150" height="70" rx="10"></rect><text class="arch-label" x="781" y="72">Analytics</text><text class="arch-sub" x="781" y="90">POWER&nbsp;BI</text></g>
+                        </svg>
+                    </figure>
+
+                    <div class="case__steps">
+                        <div class="step"><p class="step__n">01 · Context</p><h4>Business context</h4><p>An airline generating large-scale operational and financial data across ticketing, flight operations, payments and interline settlements — needing reliable, business-ready reporting.</p></div>
+                        <div class="step"><p class="step__n">02 · Modelling</p><h4>Source analysis &amp; modelling</h4><p>Performed source system analysis and a business understanding document, then designed conceptual, logical and physical models — a <strong>13-table galaxy schema</strong> with full source-to-target mapping.</p></div>
+                        <div class="step"><p class="step__n">03 · Ingestion</p><h4>Snowflake ELT</h4><p>Ingested source data from <strong>SQL Server (OLTP)</strong> into <strong>Snowflake</strong> through ELT pipelines, ready for layered transformation.</p></div>
+                        <div class="step"><p class="step__n">04 · Transform</p><h4>dbt transformation</h4><p>Built <strong>13 dbt models</strong> across staging, intermediate and mart layers, with snapshots for structured, testable transformation.</p></div>
+                        <div class="step"><p class="step__n">05 · Quality</p><h4>Data quality &amp; testing</h4><p>Validated the warehouse with row-count, null, duplicate, referential-integrity and business-logic checks across the pipeline.</p></div>
+                        <div class="step"><p class="step__n">06 · Reporting</p><h4>Power BI delivery</h4><p>Delivered a Power BI dashboard covering net revenue, top routes by revenue and top-performing agents.</p></div>
+                    </div>
+
+                    <ul class="chips"><li class="chip">SQL Server</li><li class="chip">Snowflake</li><li class="chip">dbt</li><li class="chip">Galaxy Schema</li><li class="chip">Data Quality</li><li class="chip">Power BI</li></ul>
+                    <div class="proj__actions">
+                        <a class="btn btn--secondary" href="https://github.com/pugazh308" target="_blank" rel="noopener">View on GitHub</a>
                     </div>
                 </article>
 
                 <!-- Supporting grid -->
+                <p class="subhead reveal" style="margin-top:48px">More projects</p>
                 <div class="projects">
                     <article class="project reveal">
                         <div class="media">
