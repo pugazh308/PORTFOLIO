@@ -161,6 +161,32 @@
     }
   } catch (e) {}
 
+  /* ---------- Pull-cord theme toggle ---------- */
+  try {
+    var cord = document.getElementById("cord");
+    var flash = document.getElementById("flash");
+    var rootEl = document.documentElement;
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    function isLight() { return rootEl.getAttribute("data-theme") === "light"; }
+    function syncCord() { if (cord) cord.setAttribute("aria-pressed", isLight() ? "true" : "false"); }
+    syncCord();
+    if (cord) {
+      cord.addEventListener("click", function () {
+        var next = isLight() ? "dark" : "light";
+        if (next === "light") rootEl.setAttribute("data-theme", "light");
+        else rootEl.removeAttribute("data-theme");
+        try { localStorage.setItem("pd-theme", next); } catch (e) {}
+        syncCord();
+        if (themeMeta) themeMeta.setAttribute("content", next === "light" ? "#F4F5EF" : "#0B0D0C");
+        // pull + flash animation (skipped under reduced motion via CSS)
+        cord.classList.remove("pulling"); void cord.offsetWidth; cord.classList.add("pulling");
+        if (flash) { flash.classList.remove("on"); void flash.offsetWidth; flash.classList.add("on"); }
+      });
+      cord.addEventListener("animationend", function (e) { if (e.animationName === "cordPull") cord.classList.remove("pulling"); });
+      if (flash) flash.addEventListener("animationend", function () { flash.classList.remove("on"); });
+    }
+  } catch (e) {}
+
   /* ---------- Footer year ---------- */
   try {
     var yearEl = document.getElementById("year");

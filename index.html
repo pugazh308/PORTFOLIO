@@ -30,6 +30,7 @@
          appears within 2.5s even if the main script fails to load/parse. -->
     <script>
         document.documentElement.classList.add('js');
+        try { if (localStorage.getItem('pd-theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}
         setTimeout(function () {
             var els = document.querySelectorAll('.reveal:not(.is-visible)');
             for (var i = 0; i < els.length; i++) els[i].classList.add('is-visible');
@@ -39,6 +40,14 @@
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- pull-cord theme toggle -->
+    <button class="cord" id="cord" type="button" aria-label="Toggle light and dark theme" aria-pressed="false" title="Pull the cord to switch theme">
+        <span class="cord__line" aria-hidden="true"></span>
+        <span class="cord__knob" aria-hidden="true"></span>
+        <span class="cord__hint" aria-hidden="true">pull the cord</span>
+    </button>
+    <div class="flash" id="flash" aria-hidden="true"></div>
 
     <!-- ===== NAV ===== -->
     <header class="nav" id="top">
