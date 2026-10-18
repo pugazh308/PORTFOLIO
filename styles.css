@@ -578,57 +578,43 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* ===================== PULL-CORD THEME TOGGLE ===================== */
 .cord {
-  position: fixed; top: 0; right: 14px; z-index: 101;
-  width: 40px; height: 136px;
+  position: fixed; top: 0; right: 46px; z-index: 90;
+  width: 44px; height: 140px;
   display: grid; justify-items: center; align-content: start;
   background: transparent; border: 0; padding: 0; margin: 0;
-  cursor: pointer; -webkit-tap-highlight-color: transparent;
-  transform-origin: top center;
+  cursor: grab; -webkit-tap-highlight-color: transparent;
+  transform-origin: top center; touch-action: none;
 }
+.cord.grabbing, .cord:active { cursor: grabbing; }
 .cord__line {
-  width: 2px; height: 92px;
+  width: 2px; height: 94px;
   background: linear-gradient(var(--border) 0%, var(--text-faint) 100%);
-  border-radius: 2px;
+  border-radius: 2px; transform-origin: top center; will-change: transform;
 }
 .cord__knob {
   width: 22px; height: 22px; margin-top: -3px; border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--bg);
   box-shadow: 0 2px 10px rgba(0,0,0,.45), 0 0 0 1px var(--border);
-  transition: transform .14s ease;
+  cursor: grab; touch-action: none; will-change: transform;
 }
-.cord:hover .cord__knob,
-.cord:focus-visible .cord__knob { transform: scale(1.16); }
+.cord.grabbing .cord__knob { cursor: grabbing; }
+.cord:hover .cord__knob, .cord:focus-visible .cord__knob { box-shadow: 0 2px 14px rgba(198,243,107,.5), 0 0 0 1px var(--accent); }
 .cord:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 14px; }
 /* persistent label so the cord is discoverable */
 .cord__hint {
-  margin-top: 8px;
+  margin-top: 9px;
   font-family: var(--mono); font-size: .6rem; letter-spacing: .08em; text-transform: uppercase;
   color: var(--text-faint); white-space: nowrap; text-align: center;
-  transition: color .2s ease;
+  transition: color .2s ease; pointer-events: none;
 }
 .cord:hover .cord__hint, .cord:focus-visible .cord__hint { color: var(--accent-text); }
-
-/* pull animation */
-.cord.pulling .cord__knob { animation: cordPull .5s cubic-bezier(.2,1.5,.4,1); }
-.cord.pulling .cord__line { animation: cordStretch .5s cubic-bezier(.2,1.5,.4,1); transform-origin: top; }
-@keyframes cordPull { 0%{transform:translateY(0)} 32%{transform:translateY(20px)} 100%{transform:translateY(0)} }
-@keyframes cordStretch { 0%{transform:scaleY(1)} 32%{transform:scaleY(1.22)} 100%{transform:scaleY(1)} }
-
-/* one-time attention bounce on load (stable target afterwards) */
-@media (prefers-reduced-motion: no-preference) {
-  .cord__knob { animation: cordHint 1.8s ease 1s 2; }
-}
-@keyframes cordHint { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
 /* light-switch flash on toggle */
 .flash { position: fixed; inset: 0; z-index: 200; background: #fff; opacity: 0; pointer-events: none; }
 .flash.on { animation: flashOn .5s ease; }
 @keyframes flashOn { 0%{opacity:0} 14%{opacity:.55} 30%{opacity:0} 52%{opacity:.22} 100%{opacity:0} }
-@media (prefers-reduced-motion: reduce) {
-  .cord.pulling .cord__knob, .cord.pulling .cord__line { animation: none; }
-  .flash.on { animation: none; }
-}
+@media (prefers-reduced-motion: reduce) { .flash.on { animation: none; } }
 
 /* smooth cross-fade when the theme flips */
 @media (prefers-reduced-motion: no-preference) {
@@ -639,6 +625,6 @@ html.js .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 @media (max-width: 899px) {
-  .cord { right: 78px; height: 118px; }
-  .cord__line { height: 74px; }
+  .cord { right: 96px; height: 120px; }
+  .cord__line { height: 76px; }
 }

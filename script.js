@@ -161,28 +161,81 @@
     }
   } catch (e) {}
 
-  /* ---------- Pull-cord theme toggle ---------- */
+  /* ---------- Pull-cord theme toggle (draggable with spring-back) ---------- */
   try {
     var cord = document.getElementById("cord");
+    var knob = cord && cord.querySelector(".cord__knob");
+    var line = cord && cord.querySelector(".cord__line");
     var flash = document.getElementById("flash");
     var rootEl = document.documentElement;
     var themeMeta = document.querySelector('meta[name="theme-color"]');
+
     function isLight() { return rootEl.getAttribute("data-theme") === "light"; }
     function syncCord() { if (cord) cord.setAttribute("aria-pressed", isLight() ? "true" : "false"); }
     syncCord();
-    if (cord) {
-      cord.addEventListener("click", function () {
+
+    if (cord && knob && line) {
+      var MAX = 78, THRESH = 42;
+      var dragging = false, startY = 0, pull = 0, moved = false, pid = null;
+
+      function render(px) {
+        pull = px;
+        var lh = line.offsetHeight || 90;
+        knob.style.transform = "translateY(" + px + "px)";
+        line.style.transform = "scaleY(" + (1 + px / lh) + ")";
+      }
+      function freeze() { knob.style.transition = "none"; line.style.transition = "none"; }
+      function springBack() {
+        if (reduce) { knob.style.transition = "none"; line.style.transition = "none"; }
+        else {
+          knob.style.transition = "transform .6s cubic-bezier(.18,1.65,.35,1)"; /* overshoot = recoil */
+          line.style.transition = "transform .6s cubic-bezier(.18,1.65,.35,1)";
+        }
+        render(0);
+      }
+      function fireToggle() {
         var next = isLight() ? "dark" : "light";
         if (next === "light") rootEl.setAttribute("data-theme", "light");
         else rootEl.removeAttribute("data-theme");
         try { localStorage.setItem("pd-theme", next); } catch (e) {}
         syncCord();
         if (themeMeta) themeMeta.setAttribute("content", next === "light" ? "#F4F5EF" : "#0B0D0C");
-        // pull + flash animation (skipped under reduced motion via CSS)
-        cord.classList.remove("pulling"); void cord.offsetWidth; cord.classList.add("pulling");
         if (flash) { flash.classList.remove("on"); void flash.offsetWidth; flash.classList.add("on"); }
+      }
+
+      /* drag */
+      knob.addEventListener("pointerdown", function (e) {
+        e.preventDefault();
+        dragging = true; moved = false; startY = e.clientY; pid = e.pointerId;
+        try { knob.setPointerCapture(pid); } catch (_) {}
+        freeze();
+        cord.classList.add("grabbing");
       });
-      cord.addEventListener("animationend", function (e) { if (e.animationName === "cordPull") cord.classList.remove("pulling"); });
+      knob.addEventListener("pointermove", function (e) {
+        if (!dragging) return;
+        var dy = e.clientY - startY;
+        if (dy > 3) moved = true;
+        var p = dy <= 0 ? 0 : (dy <= MAX ? dy : MAX + (dy - MAX) * 0.22); /* rubber-band past max */
+        render(p);
+      });
+      function endDrag() {
+        if (!dragging) return;
+        dragging = false;
+        cord.classList.remove("grabbing");
+        try { knob.releasePointerCapture(pid); } catch (_) {}
+        if (moved) { var hit = pull >= THRESH; springBack(); if (hit) fireToggle(); }
+        /* a plain tap (not moved) is handled by the click listener below */
+      }
+      knob.addEventListener("pointerup", endDrag);
+      knob.addEventListener("pointercancel", endDrag);
+
+      /* tap / keyboard (Enter|Space) — animate a quick pull + toggle */
+      cord.addEventListener("click", function () {
+        if (moved) { moved = false; return; } /* real drag already handled */
+        freeze(); render(THRESH + 10); void knob.offsetWidth;
+        springBack(); fireToggle();
+      });
+
       if (flash) flash.addEventListener("animationend", function () { flash.classList.remove("on"); });
     }
   } catch (e) {}
